@@ -1,1 +1,1 @@
-# .NET_Parking_Management_System
+# .NET_Parking_Slot_Management_System
