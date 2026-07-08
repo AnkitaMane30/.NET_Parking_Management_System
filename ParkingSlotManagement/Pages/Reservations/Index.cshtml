@@ -1,0 +1,44 @@
+@page
+@model ParkingSlotManagement.Pages.Reservations.Index
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="container mt-4">
+    <h2>Reservations</h2>
+    <a asp-page="/Reservations/Create" class="btn btn-primary mb-3">Create New Reservation</a>
+
+<form method="get" class="mb-3">
+    <input type="text" name="SearchText" value="@Model.searchText" placeholder="Search by Vehicle or Slot" class="form-control" />
+    <button type="submit" class="btn btn-primary mt-2">Search</button>
+</form>
+
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Slot Id</th>
+                <th>Vehicle No</th>
+                <th>Time In</th>
+                <th>Time Out</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var res in Model.listReservations)
+            {
+                <tr>
+                    <td>@res.Id</td>
+                    <td>@res.SlotId</td>
+                    <td>@res.VehicleNo</td>
+                    <td>@res.TimeIn</td>
+                    <td>@res.TimeOut</td>
+                    <td>
+                        <a asp-page="/Reservations/Edit" asp-route-id="@res.Id" class="btn btn-primary">Edit</a>
+                        <a asp-page="/Reservations/Delete" asp-route-id="@res.Id" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

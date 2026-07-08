@@ -1,0 +1,42 @@
+@page
+@model ParkingSlotManagement.Pages.Slots.Create
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="container mt-4">
+    <h2>Add New Slot</h2>
+
+    @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+    {
+        <div class="alert alert-danger">@Model.ErrorMessage</div>
+    }
+
+    @if (!string.IsNullOrEmpty(Model.SuccessMessage))
+    {
+        <div class="alert alert-success">@Model.SuccessMessage</div>
+    }
+
+    <form method="post">
+        <div class="mb-3">
+            <label class="form-label">Slot Number</label>
+            <input asp-for="slot.slotNumber" class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Location</label>
+            <input asp-for="slot.location" class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Status</label>
+            <select asp-for="slot.status" class="form-select">
+                <option value="Available">Available</option>
+                <option value="Occupied">Occupied</option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <a asp-page="/Slots/Index" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>

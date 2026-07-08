@@ -1,0 +1,52 @@
+@page
+@model ParkingSlotManagement.Pages.Slots.Index
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<div class="container mt-4">
+    <h2>Parking Slots</h2>
+
+    <a asp-page="/Slots/Create" class="btn btn-primary mb-3">Create New Slot</a>
+
+<div class="row mb-3">
+    <div class="col">
+        <div class="alert alert-info">Total Slots: @Model.TotalSlots</div>
+    </div>
+    <div class="col">
+        <div class="alert alert-success">Available: @Model.AvailableSlots</div>
+    </div>
+    <div class="col">
+        <div class="alert alert-danger">Occupied: @Model.OccupiedSlots</div>
+    </div>
+</div>
+
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Slot Number</th>
+                <th>Location</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var slot in Model.listSlots)
+            {
+                <tr>
+                    <td>@slot.id</td>
+                    <td>@slot.slotNumber</td>
+                    <td>@slot.location</td>
+                    <td>@slot.status</td>
+                    <td>
+                        <a asp-page="/Slots/Edit" asp-route-id="@slot.id" class="btn btn-primary">Edit</a>
+                        <a asp-page="/Slots/Delete" asp-route-id="@slot.id" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,36 @@
+@page
+@model ParkingSlotManagement.Pages.Slots.Delete
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<div class="container mt-4">
+    <h2>Delete Slot</h2>
+
+    @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+    {
+        <div class="alert alert-danger">@Model.ErrorMessage</div>
+    }
+
+    <form method="post">
+        <input type="hidden" asp-for="slot.id" />
+
+        <div class="mb-3">
+            <label class="form-label">Slot Number</label>
+            <input asp-for="slot.slotNumber" class="form-control" readonly />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Location</label>
+            <input asp-for="slot.location" class="form-control" readonly />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Status</label>
+            <input asp-for="slot.status" class="form-control" readonly />
+        </div>
+
+        <button type="submit" class="btn btn-danger">Confirm Delete</button>
+        <a asp-page="/Slots/Index" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
